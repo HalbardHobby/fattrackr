@@ -5,7 +5,7 @@ RUN apt-get install -y npm
 RUN apt-get install -y postgresql-client
 RUN gem install rails
 
-WORKDIR /babbler
+WORKDIR /fattrackr
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
