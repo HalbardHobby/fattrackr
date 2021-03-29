@@ -8,10 +8,12 @@ class LogsController < ApplicationController
 
   # GET /logs/intake
   def intake
+    @logs = Log.all
   end
 
   # GET /logs/expense
   def expense
+    @logs = Log.all
   end
 
   # GET /logs/new

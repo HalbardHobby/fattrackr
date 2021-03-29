@@ -1,0 +1,34 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Calories</th>
+      <th>Date</th>
+      <th>Description</th>
+      <% if !current_page?(action: 'expense') %>
+        <th>Protein</th>
+        <th>Carbohydrates</th>
+        <th>Fat</th>
+        <th>Alcochol</th>
+      <% end %>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @logs.each do |log| %>
+      <tr>
+        <td><%= log.calories %></td>
+        <td><%= log.date %></td>
+        <td><%= log.description %></td>
+        <% if log.intake %>
+          <td><%= log.protein %></td>
+          <td><%= log.carb %></td>
+          <td><%= log.fat %></td>
+          <td><%= log.alcochol %></td>
+        <% end %>
+        <td><%= link_to 'Edit', edit_log_path(log) %></td>
+        <td><%= link_to 'Destroy', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
