@@ -16,22 +16,10 @@ ActiveRecord::Schema.define(version: 2021_03_29_173344) do
   enable_extension "plpgsql"
 
   create_table "logs", force: :cascade do |t|
-    t.integer "calories"
-    t.boolean "intake"
-    t.datetime "date"
-    t.string "description"
-    t.float "protein"
-    t.float "carb"
-    t.float "fat"
-    t.float "alcochol"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "trackers", force: :cascade do |t|
-    t.integer "calories"
-    t.boolean "intake"
-    t.datetime "date"
+    t.integer "user_id", null: false
+    t.integer "calories", null: false
+    t.boolean "intake", null: false
+    t.datetime "date", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.string "description"
     t.float "protein"
     t.float "carb"
