@@ -3,17 +3,19 @@ class LogsController < ApplicationController
 
   # GET /logs or /logs.json
   def index
-    @logs = Log.all
+    @logs = Log.where("user_id = ?", current_user.id)
   end
 
   # GET /logs/intake
   def intake
-    @logs = Log.all
+    @logs = Log.where("user_id = ?", current_user.id)
+               .where("intake = ?", true)
   end
 
   # GET /logs/expense
   def expense
-    @logs = Log.all
+    @logs = Log.where("user_id = ?", current_user.id)
+               .where("intake = ?", false)
   end
 
   # GET /logs/new
