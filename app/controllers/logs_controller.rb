@@ -23,12 +23,52 @@ class LogsController < ApplicationController
     @log = Log.new
   end
 
+  # GET /logs/new_intake
+  def new_intake
+    @log = Log.new(intake: true)
+  end
+
+  # GET /logs/new_expense
+  def new_expense
+    @log = Log.new(intake: false)
+  end
+  
   # GET /logs/1/edit
   def edit
   end
 
   # POST /logs or /logs.json
   def create
+    @log = Log.new(log_params)
+
+    respond_to do |format|
+      if @log.save
+        format.html { redirect_to @log, notice: "Log was successfully created." }
+        format.json { render :show, status: :created, location: @log }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @log.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /logs/intake
+  def create_intake
+    @log = Log.new(log_params)
+
+    respond_to do |format|
+      if @log.save
+        format.html { redirect_to @log, notice: "Log was successfully created." }
+        format.json { render :show, status: :created, location: @log }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @log.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /logs/expense
+  def create_expense
     @log = Log.new(log_params)
 
     respond_to do |format|
