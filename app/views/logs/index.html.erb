@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Logs</h1>
+<h1 class="title">Logs</h1>
 
 <table>
   <thead>
@@ -28,7 +28,6 @@
         <td><%= log.carb %></td>
         <td><%= log.fat %></td>
         <td><%= log.alcochol %></td>
-        <td><%= link_to 'Show', log %></td>
         <td><%= link_to 'Edit', edit_log_path(log) %></td>
         <td><%= link_to 'Destroy', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -38,4 +37,4 @@
 
 <br>
 
-<%= link_to 'New Log', new_log_path %>
+<%= link_to 'New Log', new_log_path, class: "button is-text" %>

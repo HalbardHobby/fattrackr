@@ -6,10 +6,6 @@ class LogsController < ApplicationController
     @logs = Log.all
   end
 
-  # GET /logs/1 or /logs/1.json
-  def show
-  end
-
   # GET /logs/new
   def new
     @log = Log.new

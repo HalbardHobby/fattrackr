@@ -1,57 +1,73 @@
-<%= form_with(model: log) do |form| %>
-  <% if log.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
+<div class="box">
+  <%= form_with(model: log) do |form| %>
+    <% if log.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
 
-      <ul>
-        <% log.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% log.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :calories, class: "label" %>
+      <div class="control">
+        <%= form.number_field :calories, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :intake, class: "label" %>
+      <%= form.check_box :intake %>
+    </div>
+
+    <div class="field">
+      <%= form.label :date, class: "label" %>
+      <div class="control">
+        <%= form.datetime_select :date, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :description, class: "label" %>
+      <div class="control">
+        <%= form.text_field :description, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :protein, class: "label" %>
+      <div class="control">
+        <%= form.text_field :protein, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :carb, class: "label" %>
+      <div class="control">
+        <%= form.text_field :carb, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :fat, class: "label" %>
+      <div class="control">
+        <%= form.text_field :fat, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :alcochol, class: "label" %>
+      <div class="control">
+        <%= form.text_field :alcochol, class: "input" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Create Log", class: "button is-primary" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :calories %>
-    <%= form.number_field :calories %>
-  </div>
-
-  <div class="field">
-    <%= form.label :intake %>
-    <%= form.check_box :intake %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :protein %>
-    <%= form.text_field :protein %>
-  </div>
-
-  <div class="field">
-    <%= form.label :carb %>
-    <%= form.text_field :carb %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fat %>
-    <%= form.text_field :fat %>
-  </div>
-
-  <div class="field">
-    <%= form.label :alcochol %>
-    <%= form.text_field :alcochol %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
