@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @logs = current_user.logs.intakes
+    @logs = current_user.logs.expenses
   end
 
   def create
