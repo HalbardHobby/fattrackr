@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   resources :logs
-  resources :expenses, only: [:new, :create]
-  resources :intakes, only: [:new, :create]
+  resources :expenses, only: [:new, :create, :index]
+  resources :intakes, only: [:new, :create, :index]
 
   devise_for :users
   root 'logs#index'

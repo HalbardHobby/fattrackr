@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="title">Expenses</h1>
+
+<%= render '/shared/listing', logs: @logs %>
+
+<br>
+
+<%= link_to 'New Expense', new_expense_path, class: "button is-primary" %>

@@ -14,7 +14,7 @@ class ExpensesController < ApplicationController
     )
 
     if @log.save
-      redirect_to logs_url
+      redirect_to intakes_url
     else
       render :new
     end
