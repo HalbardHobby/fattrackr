@@ -3,7 +3,11 @@ class LogsController < ApplicationController
 
   # GET /logs or /logs.json
   def index
-    @logs = current_user.logs
+    if user_signed_in?
+      @logs = current_user.logs
+    else
+      @logs = nil
+    end
   end
 
   # GET /logs/new
