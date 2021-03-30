@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'logs/intake'
-  get 'logs/expense'
-  get 'logs/new_intake'
-  get 'logs/new_expense'
 
   resources :logs
   resources :expenses, only: [:new, :create]
