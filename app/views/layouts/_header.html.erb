@@ -1,8 +1,6 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
+    <%= link_to "FatTrackr", root_path, method: :get, class: "navbar-item" %>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -12,7 +10,9 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
+  
     <div class="navbar-end">
+    
       <div class="navbar-item">
         <% if user_signed_in? %>
           <div class="buttons">
@@ -21,12 +21,10 @@
           </div>
         <% else %>
           <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
+            <%= link_to "Sign Up", new_user_registration_path,
+                method: :get, class: "button is-primary" %>
+            <%= link_to "Log In", new_user_session_path,
+              method: :get, class: "button is-light" %>
           </div>
         <% end %>
       </div>
