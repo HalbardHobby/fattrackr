@@ -56,14 +56,16 @@ class LogsController < ApplicationController
 
   # POST /logs/intake
   def create_intake
-    @log = Log.new(log_params)
+    @log = Log.new(
+      log_params.merge(user_id: current_user.id, intake:true)
+    )
 
     respond_to do |format|
       if @log.save
         format.html { redirect_to logs_intake_url, notice: "Log was successfully created." }
         format.json { render :intake, status: :created }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new_intake, status: :unprocessable_entity }
         format.json { render json: @log.errors, status: :unprocessable_entity }
       end
     end
@@ -71,14 +73,16 @@ class LogsController < ApplicationController
 
   # POST /logs/expense
   def create_expense
-    @log = Log.new(log_params)
+    @log = Log.new(
+      log_params.merge(user_id: current_user.id, intake:true)
+    )
 
     respond_to do |format|
       if @log.save
         format.html { redirect_to logs_expense_url, notice: "Log was successfully created." }
         format.json { render :expense, status: :created }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new_expense, status: :unprocessable_entity }
         format.json { render json: @log.errors, status: :unprocessable_entity }
       end
     end

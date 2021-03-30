@@ -20,11 +20,6 @@
     </div>
 
     <div class="field">
-      <%= form.label :intake, class: "label" %>
-      <%= form.check_box :intake %>
-    </div>
-
-    <div class="field">
       <%= form.label :date, class: "label" %>
       <div class="control">
         <%= form.datetime_select :date, class: "input" %>
@@ -38,33 +33,37 @@
       </div>
     </div>
 
-    <div class="field">
-      <%= form.label :protein, class: "label" %>
-      <div class="control">
-        <%= form.text_field :protein, class: "input" %>
-      </div>
-    </div>
+    <% if current_page?(action: 'new_intake') %>
 
-    <div class="field">
-      <%= form.label :carb, class: "label" %>
-      <div class="control">
-        <%= form.text_field :carb, class: "input" %>
+      <div class="field">
+        <%= form.label :protein, class: "label" %>
+        <div class="control">
+          <%= form.text_field :protein, class: "input" %>
+        </div>
       </div>
-    </div>
 
-    <div class="field">
-      <%= form.label :fat, class: "label" %>
-      <div class="control">
-        <%= form.text_field :fat, class: "input" %>
+      <div class="field">
+        <%= form.label :carb, class: "label" %>
+        <div class="control">
+          <%= form.text_field :carb, class: "input" %>
+        </div>
       </div>
-    </div>
 
-    <div class="field">
-      <%= form.label :alcochol, class: "label" %>
-      <div class="control">
-        <%= form.text_field :alcochol, class: "input" %>
+      <div class="field">
+        <%= form.label :fat, class: "label" %>
+        <div class="control">
+          <%= form.text_field :fat, class: "input" %>
+        </div>
       </div>
-    </div>
+
+      <div class="field">
+        <%= form.label :alcochol, class: "label" %>
+        <div class="control">
+          <%= form.text_field :alcochol, class: "input" %>
+        </div>
+      </div>
+
+    <% end %>
 
     <div class="actions">
       <%= form.submit "Create Log", class: "button is-primary" %>
