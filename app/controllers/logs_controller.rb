@@ -11,11 +11,6 @@ class LogsController < ApplicationController
       @logs = nil
     end
   end
-
-  # GET /logs/new
-  def new
-    @log = Log.new
-  end
   
   # GET /logs/1/edit
   def edit
@@ -48,6 +43,7 @@ class LogsController < ApplicationController
       log = Log.find(params[:id])
       if log.user_id != current_user.id
         redirect_to dashboard_path, notice: "Not authorized to edit this log."
+      end
     end
 
     # Use callbacks to share common setup or constraints between actions.

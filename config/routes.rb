@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
   get '/dashboard/shared/:token', to: 'dashboard#shared'
 
-  resources :logs
+  resources :logs, only: [:index, :edit, :update, :destroy]
   resources :expenses, only: [:new, :create, :index]
   resources :intakes, only: [:new, :create, :index]
   resources :tokens, only: [:create, :index, :show, :destroy]
