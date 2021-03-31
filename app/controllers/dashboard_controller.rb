@@ -3,5 +3,6 @@ class DashboardController < ApplicationController
   end
 
   def shared
+    @user = Token.find_by(token: params[:token])
   end
 end
