@@ -1,6 +1,7 @@
 class LogsController < ApplicationController
-  before_action :set_log, only: %i[ show edit update destroy ]
+  before_action :set_log, only: %i[ edit update destroy ]
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /logs or /logs.json
   def index
@@ -43,6 +44,12 @@ class LogsController < ApplicationController
   end
 
   private
+    def correct_user
+      log = Log.find(params[:id])
+      if log.user_id != current_user.id
+        redirect_to dashboard_path, notice: "Not authorized to edit this log."
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_log
       @log = Log.find(params[:id])
