@@ -1,10 +1,11 @@
-require 'securerandom'
-
 class TokensController < ApplicationController
-  before_action :set_token, only: [:destroy]
+  before_action :set_token, only: [:destroy, :show]
 
   def index
     @tokens = current_user.tokens
+  end
+
+  def show
   end
 
   def create
@@ -12,7 +13,8 @@ class TokensController < ApplicationController
     @token = Token.new(user_id: current_user.id, token: uuid)
     
     if @token.save
-      redirect_to tokens_url
+      redirect_to token_url(@token)
+    end
   end
 
   def destroy
@@ -21,8 +23,9 @@ class TokensController < ApplicationController
   end
 
   private
+
     def set_token
       @token = Token.find(params[:id])
     end
-end
+
 end
