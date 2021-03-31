@@ -25,3 +25,4 @@ class TokensController < ApplicationController
       @token = Token.find(params[:id])
     end
 end
+end
