@@ -6,15 +6,23 @@
           30 Days Records
         </p>
         <div>
-          <p class="level-item">HIGHEST CONSUMPTION</p>
-          <div class="level">
-            <p class="level-item">3 days ago</p>
-            <p class="level-item">3500</p>
-          </div>
           <p class="level-item">HIGHEST EXPENDITURE</p>
           <div class="level">
-            <p class="level-item">7 days ago</p>
-            <p class="level-item">5320</p>
+            <p class="level-item">
+              <%= time_ago_in_words @expenses.max_by { |key, value| value }[0] %> ago
+            </p>
+            <p class="level-item">
+              <%= @expenses.max_by { |key, value| value }[1] %> Cal
+            </p>
+          </div>
+          <p class="level-item">HIGHEST CONSUMPTION</p>
+          <div class="level">
+            <p class="level-item">
+              <%= time_ago_in_words @calorie_intake.max_by { |key, value| value }[0] %> ago
+            </p>
+            <p class="level-item">              
+              <%= @calorie_intake.max_by { |key, value| value }[1] %> Cal
+            </p>
           </div>
         </div>
       </div>
@@ -28,15 +36,16 @@
         </p>
         <div>
           <div class="level">
-            <p class="level-item">CALORIE SURPLUS</p>
-          </div>
-          <div class="level">
             <p class="level-item">AVERAGE EXPENSE</p>
-            <p class="level-item">10</p>
+            <p class="level-item">
+              <%= @expenses.sum { |key, value| value } / @expenses.size %>
+            </p>
           </div>
           <div class="level">
             <p class="level-item">AVERAGE INTAKE</p>
-            <p class="level-item">10</p>
+            <p class="level-item">
+              <%= @calorie_intake.sum { |key, value| value } / @calorie_intake.size %>
+            </p>
           </div>
         </div>
       </div>
@@ -51,19 +60,27 @@
         <div>
           <div class="level">
             <p class="level-item">PROTEIN</p>
-            <p class="level-item">10</p>
+            <p class="level-item">
+              <%= (@protein_intake.sum { |key, value| value } / @protein_intake.size).round(2) %> gr
+            </p>
           </div>
           <div class="level">
             <p class="level-item">CARBS</p>
-            <p class="level-item">10</p>
+            <p class="level-item">
+              <%= (@carb_intake.sum { |key, value| value } / @carb_intake.size).round(2) %> gr
+            </p>
           </div>
           <div class="level">
             <p class="level-item">FAT</p>
-            <p class="level-item">10</p>
+            <p class="level-item">
+             <%= (@fat_intake.sum { |key, value| value } / @fat_intake.size).round(2) %> gr
+            </p>
           </div>
           <div class="level">
             <p class="level-item">ALCOHOL</p>
-            <p class="level-item">10</p>
+            <p class="level-item">
+              <%= (@alcohol_intake.sum { |key, value| value } / @alcohol_intake.size).round(2) %> gr
+            </p>
           </div>
         </div>
       </div>
