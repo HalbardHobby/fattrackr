@@ -1,5 +1,6 @@
 class LogsController < ApplicationController
   before_action :set_log, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /logs or /logs.json
   def index

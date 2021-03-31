@@ -1,5 +1,6 @@
 class TokensController < ApplicationController
   before_action :set_token, only: [:destroy, :show]
+  before_action :authenticate_user!
 
   def index
     @tokens = current_user.tokens

@@ -1,5 +1,6 @@
 class IntakesController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def new
     @log = Log.new(intake: true)
   end
