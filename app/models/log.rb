@@ -1,4 +1,6 @@
 class Log < ApplicationRecord
+  paginates_per 50
+
   belongs_to :user
   scope :intakes, -> {where(intake: true)}
   scope :expenses, -> {where(intake: false)}

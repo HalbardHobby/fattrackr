@@ -6,7 +6,7 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @logs = current_user.logs.expenses
+    @logs = current_user.logs.expenses.paginate(page: params[:page])
   end
 
   def create

@@ -6,7 +6,7 @@ class IntakesController < ApplicationController
   end
 
   def index
-    @logs = current_user.logs.intakes
+    @logs = current_user.logs.intakes.paginate(page: params[:page])
   end
 
   def create
