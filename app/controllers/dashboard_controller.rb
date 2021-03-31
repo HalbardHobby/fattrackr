@@ -5,6 +5,7 @@ class DashboardController < ApplicationController
   end
 
   def shared
-    @user = Token.find_by(token: params[:token])
+    @token = Token.find_by(token: params[:token])
+    redirect_to root_path, notice: "Token not found" if @token.nil?
   end
 end
