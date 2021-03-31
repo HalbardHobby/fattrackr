@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :logs
   resources :expenses, only: [:new, :create, :index]
   resources :intakes, only: [:new, :create, :index]
+  resources :tokens, only: [:create, :index, :destroy]
 
   devise_for :users
   root 'dashboard#index'
